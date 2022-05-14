@@ -10,7 +10,6 @@ class Header extends Component {
     const github = this.props.data.github;
     const name = this.props.data.name;
     const description = this.props.data.description;
-
     return (
       <header id="home">
         <ParticlesBg type="circle" bg={true} />
@@ -24,14 +23,8 @@ class Header extends Component {
           </a>
 
           <ul id="nav" className="nav">
-            <li className="current">
-              <a className="smoothscroll" href="#home">
-                Home
-              </a>
-            </li>
-
             <li>
-              <a className="smoothscroll" href="#about">
+              <a className="current" href="#about">
                 About
               </a>
             </li>
@@ -52,6 +45,20 @@ class Header extends Component {
               <a className="smoothscroll" href="#contact">
                 Contact
               </a>
+            </li>
+            <li>
+              {/* // */}
+              <select
+                onChange={(e) => {
+                  setTimeout(() => {
+                    this.props.lang(e.target.value);
+                  }, 100);
+                }}
+                defaultValue="en"
+              >
+                <option value="en">English</option>
+                <option value="fr">Francais</option>
+              </select>
             </li>
           </ul>
         </nav>

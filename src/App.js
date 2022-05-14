@@ -13,26 +13,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      foo: "bar",
-      resumeData: {}
+      lang: "en",
+      resumeData: {},
     };
 
     ReactGA.initialize("UA-110570651-1");
     ReactGA.pageview(window.location.pathname);
   }
 
+  changeLang = (lang) => {
+    this.setState({ lang: lang });
+    this.getResumeData();
+  };
   getResumeData() {
     $.ajax({
-      url: "./resumeData.json",
+      url: "./resumeData_" + this.state.lang + ".json",
       dataType: "json",
       cache: false,
-      success: function(data) {
+      success: function (data) {
         this.setState({ resumeData: data });
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function (xhr, status, err) {
         console.log(err);
         alert(err);
-      }
+      },
     });
   }
 
@@ -43,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header data={this.state.resumeData.main} />
+        <Header data={this.state.resumeData.main} lang={this.changeLang} />
         <About data={this.state.resumeData.main} />
         <Resume data={this.state.resumeData.resume} />
         <Portfolio data={this.state.resumeData.portfolio} />
