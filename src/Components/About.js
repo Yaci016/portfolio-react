@@ -15,7 +15,7 @@ class About extends Component {
     const phone = this.props.data.phone;
     const email = this.props.data.email;
     const resumeDownload = this.props.data.resumedownload;
-
+    const staticText = this.props.data.about;
     return (
       <section id="about">
         <Fade duration={1000}>
@@ -28,19 +28,19 @@ class About extends Component {
               />
             </div>
             <div className="nine columns main-col">
-              <h2>About Me</h2>
+              <h2>{staticText[0]}</h2>
 
               <p>{bio}</p>
               <div className="row">
                 <div className="columns contact-details">
-                  <h2>Contact Details</h2>
+                  <h2>{staticText[1]}</h2>
                   <p className="address">
                     <span>{name}</span>
                     <br />
                     <span>
                       {street}
                       <br />
-                      {city} {state}, {zip}
+                      {city}, {state}. {zip}
                     </span>
                     <br />
                     <span>{phone}</span>
@@ -51,7 +51,8 @@ class About extends Component {
                 <div className="columns download">
                   <p>
                     <a href={resumeDownload} className="button">
-                      <i className="fa fa-download"></i>Download Resume
+                      <i className="fa fa-download"></i>
+                      {staticText[2]}
                     </a>
                   </p>
                 </div>

@@ -15,6 +15,8 @@ class Resume extends Component {
     if (!this.props.data) return null;
 
     const skillmessage = this.props.data.skillmessage;
+    const staticText = this.props.data.static;
+
     const education = this.props.data.education.map(function (education) {
       return (
         <div key={education.school}>
@@ -60,7 +62,7 @@ class Resume extends Component {
           <div className="row education">
             <div className="three columns header-col">
               <h1>
-                <span>Education</span>
+                <span>{staticText[0]}</span>
               </h1>
             </div>
 
@@ -76,7 +78,7 @@ class Resume extends Component {
           <div className="row work">
             <div className="three columns header-col">
               <h1>
-                <span>Work</span>
+                <span>{staticText[1]}</span>
               </h1>
             </div>
 
@@ -88,7 +90,7 @@ class Resume extends Component {
           <div className="row skill">
             <div className="three columns header-col">
               <h1>
-                <span>Skills</span>
+                <span>{staticText[2]}</span>
               </h1>
             </div>
 

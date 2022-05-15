@@ -10,6 +10,7 @@ class Header extends Component {
     const github = this.props.data.github;
     const name = this.props.data.name;
     const description = this.props.data.description;
+    const navbarElements = this.props.data.header.navbar_elements;
     return (
       <header id="home">
         <ParticlesBg type="circle" bg={true} />
@@ -25,37 +26,39 @@ class Header extends Component {
           <ul id="nav" className="nav">
             <li>
               <a className="current" href="#about">
-                About
+                {navbarElements[0]}
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#resume">
-                Resume
+                {navbarElements[1]}
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#portfolio">
-                Works
+                {navbarElements[2]}
               </a>
             </li>
 
             <li>
               <a className="smoothscroll" href="#contact">
-                Contact
+                {navbarElements[3]}
               </a>
             </li>
             <li>
-              {/* // */}
               <select
                 onChange={(e) => {
                   setTimeout(() => {
                     this.props.lang(e.target.value);
                   }, 100);
                 }}
-                defaultValue="en"
               >
+                <option value="" disabled selected hidden>
+                  Language
+                </option>
+
                 <option value="en">English</option>
                 <option value="fr">Francais</option>
               </select>
@@ -72,7 +75,7 @@ class Header extends Component {
               <h3>{description}.</h3>
             </Fade>
             <hr />
-            <Fade bottom duration={2000}>
+            {/* <Fade bottom duration={2000}>
               <ul className="social">
                 <a href={project} className="button btn project-btn">
                   <i className="fa fa-book"></i>Project
@@ -81,7 +84,7 @@ class Header extends Component {
                   <i className="fa fa-github"></i>Github
                 </a>
               </ul>
-            </Fade>
+            </Fade> */}
           </div>
         </div>
 
